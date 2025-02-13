@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>画像の表示・非表示</title>
+    <style>
+        #asset, #btn2, #btn3 {
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 50px; /* 正方形の幅 */
+            height: 50px; /* 正方形の高さ */
+            border: none; /* ボタンの境界線を削除 */
+            cursor: pointer; /* カーソルをポインターに変更 */
+            position: fixed;
+            bottom: 10px; /* 画面下からの距離 */
+        }
+        #asset {
+            background-image: url('btn1.jpg');
+            left: 10px; /* 画面左からの距離 */
+        }
+        #btn2 {
+            background-image: url('btn2.jpg');
+            left: 70px; /* 画面左からの距離（assetボタンの右隣） */
+        }
+        #btn3 {
+            background-image: url('btn3.jpg');
+            left: 130px; /* 画面左からの距離（btn2ボタンの右隣） */
+        }
+        #image {
+            display: none;
+        }
+        .text {
+            display: none;
+            font-size: 35px; /* btn2テキストのサイズを大きく */
+        }
+        .small-text {
+            display: none;
+            font-size: 20px; /* btn3テキストのサイズを小さく */
+        }
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <button id="asset"></button>
+    <button id="btn2"></button>
+    <button id="btn3"></button>
+    <br>
+    <img id="image" src="image.jpg" alt="Example Image">
+    <p id="text1" class="text">Which is taller, GODZILLA or Tokyo skytree?</p>
+    <p id="text2" class="small-text red">ゴジラと東京スカイツリーはどっちの方が高いですか？</p>
+
+    <script>
+        document.getElementById("asset").onclick = function() {
+            var image = document.getElementById("image");
+            if (image.style.display === "none") {
+                image.style.display = "block";
+            } else {
+                image.style.display = "none";
+            }
+        };
+
+        document.getElementById("btn2").onclick = function() {
+            var text1 = document.getElementById("text1");
+            var btn2 = document.getElementById("btn2");
+            if (text1.style.display === "none") {
+                text1.style.display = "block";
+                btn2.style.backgroundImage = "url('btn2t.jpg')";
+            } else {
+                text1.style.display = "none";
+                btn2.style.backgroundImage = "url('btn2.jpg')";
+            }
+        };
+
+        document.getElementById("btn3").onclick = function() {
+            var text2 = document.getElementById("text2");
+            var btn3 = document.getElementById("btn3");
+            if (text2.style.display === "none") {
+                text2.style.display = "block";
+                btn3.style.backgroundImage = "url('btn3t.jpg')";
+            } else {
+                text2.style.display = "none";
+                btn3.style.backgroundImage = "url('btn3.jpg')";
+            }
+        };
+    </script>
+</body>
+</html>
